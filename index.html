@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security | 个人主页</title>
+    <style>
+        /* CSS 部分：控制网页长什么样 */
+        :root {
+            --bg-color: #0d0d0d;
+            --text-color: #0f0; /* 黑客绿 */
+            --accent-color: #00ffcc;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace; /* 等宽字体，像终端 */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            border: 2px solid var(--text-color);
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            position: relative;
+        }
+
+        /* 模拟终端顶部的栏 */
+        .terminal-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: var(--text-color);
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-top: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px #003300;
+        }
+
+        .role {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        /* 技能条样式 */
+        .section-title {
+            border-bottom: 1px dashed var(--text-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        ul {
+            list-style-type: none; /* 去掉前面的圆点 */
+            padding: 0;
+        }
+
+        li::before {
+            content: "> ";
+            color: var(--accent-color);
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* 链接样式 */
+        a {
+            color: var(--bg-color);
+            background-color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            margin-right: 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* 打字光标动画 */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: var(--text-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="terminal-header">root@kali:~</div>
+        
+        <h1>HELLO, WORLD<span class="cursor"></span></h1>
+        
+        <p class="role">我是 [你的名字] | 网络安全练习生 🛡️</p>
+        
+        <div class="content">
+            <p>> 正在初始化系统...</p>
+            <p>> 目标：成为一名全栈安全工程师</p>
+            <p>> 当前状态：学习中 (Level 2)</p>
+
+            <div class="section-title">SKILLS_LOADED</div>
+            <ul>
+                <li>Web Penetration Testing (Web渗透)</li>
+                <li>Python & Scripting (脚本编写)</li>
+                <li>Network Protocols (网络协议)</li>
+                <li>CTF Player (CTF竞赛)</li>
+            </ul>
+
+            <div class="section-title">CONNECT_ME</div>
+            <p>
+                <a href="https://github.com/yourusername" target="_blank">GITHUB</a>
+                <a href="mailto:your@email.com">EMAIL</a>
+                <a href="#">BLOG</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
