@@ -3,150 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security | 个人主页</title>
+    <title>你的名字 | 网络安全学习者</title>
     <style>
-        /* CSS 部分：控制网页长什么样 */
-        :root {
-            --bg-color: #0d0d0d;
-            --text-color: #0f0; /* 黑客绿 */
-            --accent-color: #00ffcc;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Courier New', Courier, monospace; /* 等宽字体，像终端 */
+        /* ===== 全局样式 ===== */
+        * {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            width: 100%;
-            border: 2px solid var(--text-color);
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-            position: relative;
-        }
-
-        /* 模拟终端顶部的栏 */
-        .terminal-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: var(--text-color);
-            color: var(--bg-color);
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            font-weight: bold;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        h1 {
-            margin-top: 30px;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px #003300;
+        body {
+            font-family: -apple-system, "Microsoft YaHei", sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
         }
 
-        .role {
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-        }
-
-        /* 技能条样式 */
-        .section-title {
-            border-bottom: 1px dashed var(--text-color);
-            padding-bottom: 10px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        ul {
-            list-style-type: none; /* 去掉前面的圆点 */
-            padding: 0;
-        }
-
-        li::before {
-            content: "> ";
-            color: var(--accent-color);
-        }
-
-        li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* 链接样式 */
         a {
-            color: var(--bg-color);
-            background-color: var(--text-color);
+            color: #00d4ff;
             text-decoration: none;
-            padding: 5px 10px;
-            margin-right: 10px;
-            display: inline-block;
-            transition: 0.3s;
         }
 
         a:hover {
-            background-color: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
+            color: #00ff88;
         }
 
-        /* 打字光标动画 */
-        .cursor {
+        /* ===== 导航栏 ===== */
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1a1a2e;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .nav-links a {
+            margin-left: 25px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        /* ===== 头部横幅 ===== */
+        .hero {
+            text-align: center;
+            padding: 160px 20px 100px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .hero h1 span {
+            color: #00d4ff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .hero .tags span {
+            background: #1a1a2e;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin: 5px;
             display: inline-block;
-            width: 10px;
-            height: 20px;
-            background-color: var(--text-color);
-            animation: blink 1s infinite;
+            font-size: 14px;
+            border: 1px solid #2a2a4a;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        /* ===== 通用区块 ===== */
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #00d4ff;
+            text-align: center;
+        }
+
+        .section h2::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #00d4ff;
+            margin: 10px auto 0;
+        }
+
+        /* ===== 关于我 ===== */
+        .about-content {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #222;
+            font-size: 16px;
+        }
+
+        .about-content p {
+            margin-bottom: 12px;
+        }
+
+        /* ===== 技能卡片 ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #111;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #222;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+        }
+
+        .skill-card h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* ===== 学习日志 ===== */
+        .blog-list {
+            list-style: none;
+        }
+
+        .blog-list li {
+            background: #111;
+            margin-bottom: 15px;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border: 1px solid #222;
+            transition: border-color 0.3s;
+        }
+
+        .blog-list li:hover {
+            border-color: #00d4ff;
+        }
+
+        .blog-list .date {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .blog-list .title {
+            font-size: 17px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .blog-list .desc {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* ===== 联系方式 ===== */
+        .contact-list {
+            text-align: center;
+        }
+
+        .contact-list a {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 12px 30px;
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .contact-list a:hover {
+            background: #00d4ff;
+            color: #000;
+            border-color: #00d4ff;
+        }
+
+        /* ===== 页脚 ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #444;
+            font-size: 13px;
+            border-top: 1px solid #1a1a2e;
+        }
+
+        /* ===== 手机适配 ===== */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 30px; }
+            .hero p  { font-size: 16px; }
+            nav { padding: 12px 15px; }
+            .nav-links a { margin-left: 12px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="terminal-header">root@kali:~</div>
-        
-        <h1>HELLO, WORLD<span class="cursor"></span></h1>
-        
-        <p class="role">我是 [你的名字] | 网络安全练习生 🛡️</p>
-        
-        <div class="content">
-            <p>> 正在初始化系统...</p>
-            <p>> 目标：成为一名全栈安全工程师</p>
-            <p>> 当前状态：学习中 (Level 2)</p>
+<!-- 导航栏 -->
+<nav>
+    <div class="logo">🔐 YourName</div>
+    <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#skills">技能</a>
+        <a href="#blog">日志</a>
+        <a href="#contact">联系</a>
+    </div>
+</nav>
 
-            <div class="section-title">SKILLS_LOADED</div>
-            <ul>
-                <li>Web Penetration Testing (Web渗透)</li>
-                <li>Python & Scripting (脚本编写)</li>
-                <li>Network Protocols (网络协议)</li>
-                <li>CTF Player (CTF竞赛)</li>
-            </ul>
+<!-- 头部横幅 -->
+<div class="hero">
+    <h1>你好，我是 <span>你的名字</span></h1>
+    <p>🎓 网络安全专业 · 大二在读</p>
+    <div class="tags">
+        <span>🔒 Web安全</span>
+        <span>🐍 Python</span>
+        <span>🐧 Linux</span>
+        <span>🏁 CTF</span>
+        <span>🌐 网络协议</span>
+    </div>
+</div>
 
-            <div class="section-title">CONNECT_ME</div>
-            <p>
-                <a href="https://github.com/yourusername" target="_blank">GITHUB</a>
-                <a href="mailto:your@email.com">EMAIL</a>
-                <a href="#">BLOG</a>
-            </p>
+<!-- 关于我 -->
+<div class="section" id="about">
+    <h2>👤 关于我</h2>
+    <div class="about-content">
+        <p>👋 你好！我是一名网络安全专业的大二学生。</p>
+        <p>🔍 我对网络安全充满热情，目前正在学习 Web 安全、渗透测试等方向。</p>
+        <p>📚 我相信学习最好的方式就是实践和记录，所以创建了这个网站来分享我的学习历程。</p>
+        <p>🎯 目标：成为一名优秀的网络安全工程师。</p>
+    </div>
+</div>
+
+<!-- 技能 -->
+<div class="section" id="skills">
+    <h2>🛠️ 技能</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>💻 编程语言</h3>
+            <p>Python · C语言 · 正在学习 JavaScript</p>
+        </div>
+        <div class="skill-card">
+            <h3>🔐 安全技能</h3>
+            <p>SQL注入 · XSS · 网络抓包分析</p>
+        </div>
+        <div class="skill-card">
+            <h3>🧰 工具</h3>
+            <p>Wireshark · Nmap · Burp Suite · Kali Linux</p>
+        </div>
+        <div class="skill-card">
+            <h3>📖 正在学习</h3>
+            <p>渗透测试 · CTF竞赛 · 漏洞挖掘</p>
         </div>
     </div>
+</div>
+
+<!-- 学习日志 -->
+<div class="section" id="blog">
+    <h2>📝 学习日志</h2>
+    <ul class="blog-list">
+        <li>
+            <div class="date">2025-01-15</div>
+            <div class="title">🚀 个人网站正式上线！</div>
+            <div class="desc">今天用 GitHub Pages 搭建了我的个人网站，记录学习之旅的起点。</div>
+        </li>
+        <li>
+            <div class="date">2025-01-14</div>
+            <div class="title">📖 SQL注入原理学习</div>
+            <div class="desc">学习了SQL注入的基本原理，包括联合查询注入和布尔盲注。</div>
+        </li>
+        <li>
+            <div class="date">2025-01-13</div>
+            <div class="title">🐧 Kali Linux 环境配置</div>
+            <div class="desc">安装并配置了 Kali Linux 虚拟机，熟悉了常用安全工具。</div>
+        </li>
+    </ul>
+</div>
+
+<!-- 联系方式 -->
+<div class="section" id="contact">
+    <h2>📬 联系我</h2>
+    <div class="contact-list">
+        <a href="https://github.com/yourusername" target="_blank">📦 GitHub</a>
+        <a href="mailto:your@email.com">📧 Email</a>
+        <a href="#" target="_blank">💬 CSDN</a>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+    <p>© 2025 YourName | 网络安全学习之路</p>
+    <p>🔐 Stay Curious, Stay Secure.</p>
+</footer>
 
 </body>
 </html>
